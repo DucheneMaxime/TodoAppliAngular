@@ -1,25 +1,10 @@
 export default class Todo{
-    private _title: string;
-    private _isDone: boolean;
+    public title: string;
+    public isDone: boolean;
+    public id: number;
 
     constructor(title : string, isDone : boolean){
-        this._title = title;
-        this._isDone = isDone;
+        this.title = title;
+        this.isDone = isDone;
     }
-
-    get title(): string {
-        return this._title;
-    }
-
-    set title(title){
-        this._title = title;
-    }
-
-    get isDone(): boolean {
-        return this._isDone;
-    }
-
-    set isDone(isDone :boolean){
-        this._isDone=isDone;
-    } 
 }

@@ -1,6 +1,9 @@
 import Todo  from "../model/Todo";
+import { ApiServiceService } from './api-service.service'
 
 export default class TodoApi {
+
+    //private _todos: Array<Todo> = ApiServiceService.getTodos();
 
     private _todos: Array<Todo> = [new Todo('Faire la vaisselle', true),
     new Todo('Envoyer un mail à Olivier', false),
@@ -16,7 +19,7 @@ export default class TodoApi {
     }
 
     addTodo(todo: Todo) {
-        this._todos = [...this._todos,todo]
+        this._todos = [...this._todos,todo];
     }
 
     deleteTodo(todoDel: Todo) {

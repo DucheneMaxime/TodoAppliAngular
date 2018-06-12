@@ -1,32 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import Todo from "../model/Todo";
 import TodoServices from '../services/TodoServices';
+import { Observable } from 'rxjs';
+import { ApiServiceService } from '../services/api-service.service';
 
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.css'],
   providers: [
-    TodoServices
+    ApiServiceService
   ]
 })
 export class TodoListComponent implements OnInit {
 
-  private _todos: Array<Todo>;
+  private _todos: Observable<Array<Todo>>;
 
-  constructor(private todoService: TodoServices) { }
-
-   get todos(): Array<Todo> {
-    this.todoService.getTodos().then(value => this._todos = value);
-    return this._todos;
-  }
-
-   set todos(value: Array<Todo>) {
-    this._todos = value;
-  }
+  constructor(private ApiService: ApiServiceService) { }
 
   ngOnInit() {
-    this.todoService.getTodos().then(value => this._todos = value);
+    this._todos = this.ApiService.getTodos();
   }
 
 }

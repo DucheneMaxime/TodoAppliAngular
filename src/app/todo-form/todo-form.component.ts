@@ -13,15 +13,16 @@ import TodoServices from '../services/TodoServices';
 
 export class TodoFormComponent implements OnInit {
 
-  todo:Todo = new Todo("", false);
+  todo:Todo;
 
-  constructor(private todoService:TodoServices) { }
+  constructor(private service:TodoServices) { }
 
   handleClick() {
-    this.todoService.addTodo(new Todo(this.todo.title, this.todo.isDone));
+    this.service.addTodo(new Todo(this.todo.title, this.todo.isDone));
   }
 
   ngOnInit() {
+    this.todo = new Todo("", false);
   }
 
 }
